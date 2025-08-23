@@ -1,0 +1,29 @@
+default_install_hook_types:
+  - pre-commit
+  - commit-msg
+
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: 0acff885bcb16381b67930fefb91e460202f172c # v0.12.10
+    hooks:
+      - id: ruff
+      - id: ruff-format
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 2d951338ec8cdf4fc958b42681c5e1b5ccda7b30 # 0.8.13
+    hooks:
+      - id: uv-lock
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c # v6.0.0
+    hooks:
+      - id: check-merge-conflict
+      - id: debug-statements
+      - id: fix-byte-order-marker
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: name-tests-test
+        args: [ --pytest-test-first ]
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: c710c9f541ae452547fdce5c360929f007ec4867 # v4.8.3
+    hooks:
+      - id: commitizen
+        stages: [ commit-msg ]

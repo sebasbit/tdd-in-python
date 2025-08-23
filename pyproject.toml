@@ -1,0 +1,107 @@
+[project]
+name = "tdd-in-python"
+version = "0.1.0"
+description = "Test Driven Development in Python using Pytest. Following Codely's \"TDD: Test-Driven Development\" course."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "sebasbit", email = "sebastian.torres0426@gmail.com"}]
+classifiers = [
+    "Environment :: Console",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Education :: Testing",
+    "Typing :: Typed"
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "commitizen>=4.8.3",
+    "ruff>=0.12.10",
+    "tox>=4.28.4",
+    "tox-uv>=1.28.0",
+]
+pre-commit = [
+    "pre-commit>=4.3.0",
+    "pre-commit-uv>=4.1.4",
+]
+tests = [
+    "pytest>=8.4.1",
+]
+typing = [
+    "mypy>=1.17.1",
+]
+
+[tool.uv]
+default-groups = ["dev", "pre-commit", "tests", "typing"]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "$version"
+version_scheme = "semver2"
+version_provider = "uv"
+update_changelog_on_bump = true
+major_version_zero = true
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+testpaths = ["tests"]
+filterwarnings = [
+    "error",
+]
+
+[tool.mypy]
+python_version = "3.13"
+files = ["src"]
+show_error_codes = true
+pretty = true
+strict = true
+
+[tool.ruff]
+src = ["src"]
+fix = false
+output-format = "full"
+
+[tool.ruff.lint]
+select = [
+    "B", # flake8-bugbear
+    "E", # pycodestyle error
+    "F", # pyflakes
+    "I", # isort
+    "UP", # pyupgrade
+    "W", # pycodestyle warning
+]
+
+[tool.ruff.lint.isort]
+force-single-line = true
+order-by-type = false
+
+[tool.tox]
+env_list = [
+    "py3.13",
+    "typing"
+]
+
+[tool.tox.env_run_base]
+description = "run pytest on latest dependency versions"
+runner = "uv-venv-lock-runner"
+constrain_package_deps = true
+use_frozen_constraints = true
+dependency_groups = ["tests"]
+env_tmp_dir = "{toxworkdir}/tmp/{envname}"
+commands = [[
+    "pytest", "-v", "--tb=short", "--basetemp={env_tmp_dir}",
+    {replace = "posargs", default = [], extend = true},
+]]
+
+[tool.tox.env.typing]
+description = "run static type checkers"
+dependency_groups = ["typing"]
+commands = [["mypy"]]
+
+[tool.tox.env.style]
+description = "run all pre-commit hooks on all files"
+dependency_groups = ["pre-commit"]
+skip_install = true
+commands = [["pre-commit", "run", "--all-files"]]
