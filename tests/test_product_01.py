@@ -1,5 +1,6 @@
 import pytest
 
+from tdd_in_python import InvalidPriceError
 from tdd_in_python import Product
 
 
@@ -9,3 +10,8 @@ from tdd_in_python import Product
 def test_product_price(price, total):
     product = Product(price)
     assert product.total() == total
+
+
+def test_product_price_cannot_be_negative():
+    with pytest.raises(InvalidPriceError):
+        Product(-1)

@@ -6,3 +6,7 @@ class Product:
 
     def total(self):
         return self.price + (self.price * self.VAT)
+
+
+class InvalidPriceError(ValueError):
+    pass
