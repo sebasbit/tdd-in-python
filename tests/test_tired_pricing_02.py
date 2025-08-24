@@ -9,7 +9,15 @@ from tdd_in_python import calculate_tired_pricing
 
 
 @pytest.mark.parametrize(
-    "quantity,tired_price", [(1, 299), (2, 598), (3, 717), (4, 956), (5, 1195)]
+    "quantity,tired_price",
+    [
+        (1, 299),
+        (2, 598),
+        (3, 717),
+        (4, 956),
+        (5, 1195),
+        (11, 2409),
+    ],
 )
 def test_calculate_tired_pricing(quantity, tired_price):
     assert calculate_tired_pricing(quantity) == tired_price
