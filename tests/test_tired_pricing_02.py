@@ -14,3 +14,4 @@ def test_calculate_tired_pricing_for_range_1_to_2():
 def test_calculate_tired_pricing_for_range_3_to_10():
     assert calculate_tired_pricing(3) == 717
     assert calculate_tired_pricing(5) == 1195
+    assert calculate_tired_pricing(10) == 2390
