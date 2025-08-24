@@ -20,6 +20,9 @@ from tdd_in_python import calculate_tired_pricing
         (12, 2628),
         (13, 2847),
         (26, 5174),
+        (27, 5373),
+        (28, 5572),
+        (50, 9950),
     ],
 )
 def test_calculate_tired_pricing(quantity, tired_price):
