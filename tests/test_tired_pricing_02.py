@@ -25,3 +25,10 @@ from tdd_in_python import calculate_tired_pricing
 )
 def test_calculate_tired_pricing(quantity, tired_price):
     assert calculate_tired_pricing(quantity) == tired_price
+
+
+def test_number_of_subscriptions_cannot_be_less_than_one():
+    with pytest.raises(ValueError):
+        calculate_tired_pricing(0)
+    with pytest.raises(ValueError):
+        calculate_tired_pricing(-1)
