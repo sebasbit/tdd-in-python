@@ -6,5 +6,6 @@ Check out Codely's repository for a full explanation:
 from tdd_in_python import calculate_tired_pricing
 
 
-def test_calculate_tired_pricing():
+def test_calculate_tired_pricing_for_range_1_to_2():
     assert calculate_tired_pricing(1) == 299
+    assert calculate_tired_pricing(2) == 598
