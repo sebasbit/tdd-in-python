@@ -3,4 +3,4 @@ class Product:
         self.price = price
 
     def total(self):
-        return 11_900
+        return self.price + (self.price * 0.19)
