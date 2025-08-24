@@ -1,1 +1,1 @@
-from .hello_world import greeting as greeting
+from .product_01 import Product as Product
