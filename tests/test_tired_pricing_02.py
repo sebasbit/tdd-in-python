@@ -9,3 +9,8 @@ from tdd_in_python import calculate_tired_pricing
 def test_calculate_tired_pricing_for_range_1_to_2():
     assert calculate_tired_pricing(1) == 299
     assert calculate_tired_pricing(2) == 598
+
+
+def test_calculate_tired_pricing_for_range_3_to_10():
+    assert calculate_tired_pricing(3) == 717
+    assert calculate_tired_pricing(5) == 1195
