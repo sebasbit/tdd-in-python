@@ -1,11 +1,13 @@
 def calculate_tired_pricing(quantity: int) -> int:
     if quantity <= 2:
-        return quantity * 299
+        subscription_price = 299
     elif quantity <= 10:
-        return quantity * 239
+        subscription_price = 239
     elif quantity <= 25:
-        return quantity * 219
+        subscription_price = 219
     elif quantity <= 50:
-        return quantity * 199
+        subscription_price = 199
     else:
-        return quantity * 149
+        subscription_price = 149
+
+    return quantity * subscription_price
