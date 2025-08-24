@@ -5,6 +5,6 @@ def calculate_tired_pricing(quantity: int) -> int:
         return quantity * 219
     elif quantity >= 26 and quantity <= 50:
         return quantity * 199
-    elif quantity == 51:
-        return 7599
+    elif quantity > 50:
+        return quantity * 149
     return quantity * 299
