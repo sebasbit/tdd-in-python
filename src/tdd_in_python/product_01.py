@@ -3,11 +3,16 @@ class Product:
 
     def __init__(self, price):
         self.price = price
-        if self.price < 0:
-            raise InvalidPriceError()
 
     def total(self):
-        return self.price + (self.price * self.VAT)
+        return self.price.value + (self.price.value * self.VAT)
+
+
+class ProductPrice:
+    def __init__(self, value):
+        self.value = value
+        if self.value < 0:
+            raise InvalidPriceError()
 
 
 class InvalidPriceError(ValueError):
