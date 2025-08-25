@@ -12,10 +12,12 @@ class Tier:
             return 0
         if n_subs > self.max_subs:
             return self.full_cost()
-        return self.price * (n_subs - self.min_subs + 1)
+        subs_in_tier = n_subs - self.min_subs + 1
+        return self.price * subs_in_tier
 
     def full_cost(self):
-        return (self.max_subs - self.min_subs + 1) * self.price
+        total_subs_in_tier = self.max_subs - self.min_subs + 1
+        return self.price * total_subs_in_tier
 
 
 def calculate_graduated_tiered_pricing(number):
