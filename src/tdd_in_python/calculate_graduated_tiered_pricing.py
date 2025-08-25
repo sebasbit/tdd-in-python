@@ -7,6 +7,9 @@ class Tier:
     def apply(self, n_subs):
         return self.min_subs <= n_subs <= self.max_subs
 
+    def cost_of(self, n_subs):
+        return self.price * (n_subs - self.min_subs + 1)
+
     def total_cost(self):
         return (self.max_subs - self.min_subs + 1) * self.price
 
@@ -24,19 +27,17 @@ def calculate_graduated_tiered_pricing(number):
             + tier_2.total_cost()
             + tier_3.total_cost()
             + tier_4.total_cost()
-            + ((number - 50) * tier_5.price)
+            + tier_5.cost_of(number)
         )
     if tier_4.apply(number):
         return (
             tier_1.total_cost()
             + tier_2.total_cost()
             + tier_3.total_cost()
-            + ((number - 25) * tier_4.price)
+            + tier_4.cost_of(number)
         )
     if tier_3.apply(number):
-        return (
-            tier_1.total_cost() + tier_2.total_cost() + ((number - 10) * tier_3.price)
-        )
+        return tier_1.total_cost() + tier_2.total_cost() + tier_3.cost_of(number)
     if tier_2.apply(number):
-        return tier_1.total_cost() + ((number - 2) * tier_2.price)
-    return number * tier_1.price
+        return tier_1.total_cost() + tier_2.cost_of(number)
+    return tier_1.cost_of(number)
