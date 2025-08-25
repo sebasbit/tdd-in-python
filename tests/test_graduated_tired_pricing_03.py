@@ -19,3 +19,8 @@ def test_calculate_graduated_tiered_pricing_for_tier_2():
 def test_calculate_graduated_tiered_pricing_for_tier_3():
     assert calculate_graduated_tiered_pricing(11) == 2729
     assert calculate_graduated_tiered_pricing(25) == 5795
+
+
+def test_calculate_graduated_tiered_pricing_for_tier_4():
+    assert calculate_graduated_tiered_pricing(26) == 5994
+    assert calculate_graduated_tiered_pricing(50) == 10770
