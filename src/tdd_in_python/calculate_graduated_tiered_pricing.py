@@ -10,9 +10,7 @@ class Tier:
 def calculate_graduated_tiered_pricing(number):
     tier_1 = Tier(2, 299)
     tier_2 = Tier(8, 239)
-
-    tier_3_price = 219
-    tier_3_total = 15 * tier_3_price
+    tier_3 = Tier(15, 219)
 
     tier_4_price = 199
     tier_4_total = 25 * tier_4_price
@@ -23,7 +21,7 @@ def calculate_graduated_tiered_pricing(number):
         return (
             tier_1.total_cost()
             + tier_2.total_cost()
-            + tier_3_total
+            + tier_3.total_cost()
             + tier_4_total
             + ((number - 50) * tier_5_price)
         )
@@ -31,12 +29,12 @@ def calculate_graduated_tiered_pricing(number):
         return (
             tier_1.total_cost()
             + tier_2.total_cost()
-            + tier_3_total
+            + tier_3.total_cost()
             + ((number - 25) * tier_4_price)
         )
     if number >= 11:
         return (
-            tier_1.total_cost() + tier_2.total_cost() + ((number - 10) * tier_3_price)
+            tier_1.total_cost() + tier_2.total_cost() + ((number - 10) * tier_3.price)
         )
     if number >= 3:
         return tier_1.total_cost() + ((number - 2) * tier_2.price)
