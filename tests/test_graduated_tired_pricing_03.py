@@ -16,3 +16,7 @@ def test_calculate_graduated_tiered_pricing_for_2_subs():
 
 def test_calculate_graduated_tiered_pricing_for_3_subs():
     assert calculate_graduated_tiered_pricing(3) == 837
+
+
+def test_calculate_graduated_tiered_pricing_for_4_subs():
+    assert calculate_graduated_tiered_pricing(4) == 1076
