@@ -1,4 +1,4 @@
-def calculate_tired_pricing(quantity: int) -> int:
+def calculate_tiered_pricing(quantity: int) -> int:
     if quantity <= 0:
         raise ValueError()
     elif quantity <= 2:

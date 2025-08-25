@@ -5,7 +5,7 @@ Check out Codely's repository for a full explanation:
 
 import pytest
 
-from tdd_in_python import calculate_tired_pricing
+from tdd_in_python import calculate_tiered_pricing
 
 
 @pytest.mark.parametrize(
@@ -23,12 +23,12 @@ from tdd_in_python import calculate_tired_pricing
         (52, 7748),
     ],
 )
-def test_calculate_tired_pricing(quantity, tired_price):
-    assert calculate_tired_pricing(quantity) == tired_price
+def test_calculate_tiered_pricing(quantity, tired_price):
+    assert calculate_tiered_pricing(quantity) == tired_price
 
 
 def test_number_of_subscriptions_cannot_be_less_than_one():
     with pytest.raises(ValueError):
-        calculate_tired_pricing(0)
+        calculate_tiered_pricing(0)
     with pytest.raises(ValueError):
-        calculate_tired_pricing(-1)
+        calculate_tiered_pricing(-1)
