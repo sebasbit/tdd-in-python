@@ -11,13 +11,15 @@ def calculate_graduated_tiered_pricing(number):
     tier_4_price = 199
     tier_4_total = 25 * tier_4_price
 
+    tier_5_price = 149
+
     if number >= 51:
         return (
             tier_1_total
             + tier_2_total
             + tier_3_total
             + tier_4_total
-            + ((number - 50) * 149)
+            + ((number - 50) * tier_5_price)
         )
     if number >= 26:
         return (
