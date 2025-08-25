@@ -22,7 +22,7 @@ class Tier:
         return total_subs_in_tier
 
 
-def calculate_graduated_tiered_pricing(number):
+def calculate_graduated_tiered_pricing(subscriptions):
     tiers = (
         Tier(1, 2, 299),
         Tier(3, 10, 239),
@@ -33,8 +33,8 @@ def calculate_graduated_tiered_pricing(number):
 
     total_price = 0
     for tier in tiers:
-        if tier.apply_for(number):
-            total_price += tier.cost_for(number)
+        if tier.apply_for(subscriptions):
+            total_price += tier.cost_for(subscriptions)
         else:
             break
 
