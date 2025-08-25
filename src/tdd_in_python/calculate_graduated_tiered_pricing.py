@@ -11,14 +11,11 @@ class Tier:
         if n_subs < self.min_subs:
             return 0
         if n_subs > self.max_subs:
-            return self.full_cost()
+            return self.price * self.total_subs_in_tier()
         return self.price * self.subs_in_tier(n_subs)
 
     def subs_in_tier(self, n_subs):
         return n_subs - self.min_subs + 1
-
-    def full_cost(self):
-        return self.price * self.total_subs_in_tier()
 
     def total_subs_in_tier(self):
         total_subs_in_tier = self.max_subs - self.min_subs + 1
