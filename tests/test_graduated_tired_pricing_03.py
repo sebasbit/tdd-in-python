@@ -6,5 +6,9 @@ Check out Codely's repository for a full explanation:
 from tdd_in_python import calculate_graduated_tiered_pricing
 
 
-def test_calculate_graduated_tiered_pricing():
+def test_calculate_graduated_tiered_pricing_for_1_sub():
     assert calculate_graduated_tiered_pricing(1) == 299
+
+
+def test_calculate_graduated_tiered_pricing_for_2_subs():
+    assert calculate_graduated_tiered_pricing(2) == 598
