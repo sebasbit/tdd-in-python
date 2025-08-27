@@ -1,3 +1,5 @@
+from typing import Any
+
 from fastapi import Depends
 from fastapi import FastAPI
 from fastapi import status
@@ -16,7 +18,9 @@ class VideoRequest(BaseModel):
 
 
 @app.post("/video", status_code=status.HTTP_201_CREATED)
-def create_video(video_req: VideoRequest, session: Session = Depends(get_db)):
+def create_video(
+    video_req: VideoRequest, session: Session = Depends(get_db)
+) -> dict[str, Any]:
     video_creator = VideoCreator(SQLAlchemyVideoRepository(session))
     video = video_creator.execute(video_req.title)
     return {"id": video.id, "title": video.title}

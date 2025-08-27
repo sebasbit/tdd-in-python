@@ -8,7 +8,7 @@ class VideoCreator:
     def __init__(self, video_repository: VideoRepository):
         self.video_repository = video_repository
 
-    def execute(self, title: str):
+    def execute(self, title: str) -> Video:
         video = Video()
         video.title = self.sanitize_title(title)
         self.video_repository.save(video)
