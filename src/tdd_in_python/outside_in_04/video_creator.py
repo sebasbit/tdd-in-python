@@ -5,5 +5,5 @@ class Video:
 class VideoCreator:
     def execute(self, title: str):
         video = Video()
-        video.title = title.strip()
+        video.title = title.strip().rstrip(".")
         return video
