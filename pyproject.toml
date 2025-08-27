@@ -13,7 +13,10 @@ classifiers = [
     "Typing :: Typed"
 ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "fastapi[standard]>=0.116.1",
+    "sqlalchemy>=2.0.43",
+]
 
 [dependency-groups]
 dev = [
@@ -27,7 +30,9 @@ pre-commit = [
     "pre-commit-uv>=4.1.4",
 ]
 tests = [
+    "httpx>=0.28.1",
     "pytest>=8.4.1",
+    "pytest-mock>=3.14.1",
 ]
 typing = [
     "mypy>=1.17.1",
@@ -76,6 +81,9 @@ select = [
 [tool.ruff.lint.isort]
 force-single-line = true
 order-by-type = false
+
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["fastapi.Depends", "fastapi.params.Depends"]
 
 [tool.tox]
 env_list = [
