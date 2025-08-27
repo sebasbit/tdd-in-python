@@ -1,12 +1,24 @@
+import pytest
+
 from tdd_in_python.outside_in_04 import Video
 from tdd_in_python.outside_in_04 import VideoCreator
 
 
-def test_video_creator_sanitizes_title():
+@pytest.fixture()
+def mock_repository(mocker):
+    def save_side_effect(video):
+        video.id = 1
+
+    mock_repository = mocker.Mock()
+    mock_repository.save.side_effect = save_side_effect
+    yield mock_repository
+
+
+def test_video_creator_sanitizes_title(mock_repository):
     title = (
         "  Title with frontend, Frontend, front-end, whitespaces, and a final dot.  "
     )
-    video_creator = VideoCreator()
+    video_creator = VideoCreator(mock_repository)
     video = video_creator.execute(title)
     assert (
         video.title
@@ -14,13 +26,7 @@ def test_video_creator_sanitizes_title():
     )
 
 
-def test_video_creator_saves_the_video(mocker):
-    def save_side_effect(video):
-        video.id = 1
-
-    mock_repository = mocker.Mock()
-    mock_repository.save.side_effect = save_side_effect
-
+def test_video_creator_saves_the_video(mock_repository):
     video_creator = VideoCreator(mock_repository)
     video = video_creator.execute("Python 101")
 
