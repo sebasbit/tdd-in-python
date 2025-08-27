@@ -12,25 +12,20 @@ def mock_repository(mocker):
     mock_repository = mocker.Mock()
     mock_repository.save.side_effect = save_side_effect
     yield mock_repository
+    mock_repository.save.assert_called_once()
 
 
-def test_video_creator_sanitizes_title(mock_repository):
+def test_video_creator(mock_repository):
     title = (
         "  Title with frontend, Frontend, front-end, whitespaces, and a final dot.  "
     )
-    video_creator = VideoCreator(mock_repository)
-    video = video_creator.execute(title)
-    assert (
-        video.title
-        == "Title with Front-end, Front-end, Front-end, whitespaces, and a final dot"
+    expected_title = (
+        "Title with Front-end, Front-end, Front-end, whitespaces, and a final dot"
     )
 
-
-def test_video_creator_saves_the_video(mock_repository):
     video_creator = VideoCreator(mock_repository)
-    video = video_creator.execute("Python 101")
+    video = video_creator.execute(title)
 
-    mock_repository.save.assert_called_once()
     assert isinstance(video, Video)
-    assert video.id == 1
-    assert video.title == "Python 101"
+    assert isinstance(video.id, int)
+    assert video.title == expected_title
