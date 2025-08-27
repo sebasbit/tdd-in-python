@@ -7,6 +7,16 @@ import pytest
 from fastapi.testclient import TestClient
 
 from tdd_in_python.outside_in_04 import app
+from tdd_in_python.outside_in_04 import Base
+from tdd_in_python.outside_in_04 import engine
+
+
+@pytest.fixture(autouse=True)
+def setup_and_teardown_db():
+    Base.metadata.drop_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
+    yield
+    Base.metadata.drop_all(bind=engine)
 
 
 @pytest.fixture()

@@ -1,11 +1,18 @@
 import abc
 import re
 
+from sqlalchemy.orm import Mapped
+from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import Session
 
+from .database import Base
 
-class Video:
-    title: str
+
+class Video(Base):
+    __tablename__ = "videos"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    title: Mapped[str]
 
 
 class VideoRepository(abc.ABC):
@@ -19,7 +26,8 @@ class SQLAlchemyVideoRepository(VideoRepository):
         self.session = session
 
     def save(self, video: Video):
-        raise NotImplementedError
+        self.session.add(video)
+        self.session.commit()
 
 
 class VideoCreator:
