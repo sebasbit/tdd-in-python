@@ -33,5 +33,5 @@ def test_create_video_endpoint(client):
     assert response.status_code == 201
     assert response.json() == {
         "id": 1,
-        "title": "Course of Front-End, Front-End, and more Front-End",
+        "title": "Course of Front-end, Front-end, and more Front-end",
     }
