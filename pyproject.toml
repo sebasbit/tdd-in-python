@@ -13,7 +13,9 @@ classifiers = [
     "Typing :: Typed"
 ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "fastapi[standard]>=0.116.1",
+]
 
 [dependency-groups]
 dev = [
@@ -27,7 +29,9 @@ pre-commit = [
     "pre-commit-uv>=4.1.4",
 ]
 tests = [
+    "httpx>=0.28.1",
     "pytest>=8.4.1",
+    "pytest-mock>=3.14.1",
 ]
 typing = [
     "mypy>=1.17.1",
