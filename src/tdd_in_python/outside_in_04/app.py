@@ -5,8 +5,8 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from .database import get_db
-from .video_creator import SQLAlchemyVideoRepository
 from .video_creator import VideoCreator
+from .video_repository import SQLAlchemyVideoRepository
 
 app = FastAPI()
 
