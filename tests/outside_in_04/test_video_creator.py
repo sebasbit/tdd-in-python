@@ -13,3 +13,10 @@ def test_video_creator_removes_final_dots():
     video_creator = VideoCreator()
     video = video_creator.execute(title)
     assert video.title == "title with a final dot"
+
+
+def test_video_creator_fixes_misspelling_of_frontend():
+    title = "title with frontend, Frontend, and front-end"
+    video_creator = VideoCreator()
+    video = video_creator.execute(title)
+    assert video.title == "title with Front-end, Front-end, and Front-end"
