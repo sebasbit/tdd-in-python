@@ -1,3 +1,8 @@
+"""
+Check out Codely's repository for a full explanation:
+    https://github.com/CodelyTV/refactoring-code_smells-design_patterns/tree/de397ea9e331215aa8e5c9ea4e5ff16270a9ba0f/exercises/legacy_create_video
+"""
+
 import pytest
 from fastapi.testclient import TestClient
 
