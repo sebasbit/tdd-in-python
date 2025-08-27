@@ -1,22 +1,13 @@
 from tdd_in_python.outside_in_04 import VideoCreator
 
 
-def test_video_creator_removes_trailing_and_leading_spaces():
-    title = "  title with spaces  "
+def test_video_creator_sanitizes_title():
+    title = (
+        "  Title with frontend, Frontend, front-end, whitespaces, and a final dot.  "
+    )
     video_creator = VideoCreator()
     video = video_creator.execute(title)
-    assert video.title == "title with spaces"
-
-
-def test_video_creator_removes_final_dots():
-    title = "title with a final dot."
-    video_creator = VideoCreator()
-    video = video_creator.execute(title)
-    assert video.title == "title with a final dot"
-
-
-def test_video_creator_fixes_misspelling_of_frontend():
-    title = "title with frontend, Frontend, and front-end"
-    video_creator = VideoCreator()
-    video = video_creator.execute(title)
-    assert video.title == "title with Front-end, Front-end, and Front-end"
+    assert (
+        video.title
+        == "Title with Front-end, Front-end, Front-end, whitespaces, and a final dot"
+    )
