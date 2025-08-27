@@ -8,6 +8,10 @@ class Video:
 class VideoCreator:
     def execute(self, title: str):
         video = Video()
-        title = re.sub(r"frontend|Frontend|front-end", "Front-end", title)
-        video.title = title.strip().rstrip(".")
+        video.title = self.sanitize_title(title)
         return video
+
+    def sanitize_title(self, title: str) -> str:
+        pattern = r"frontend|Frontend|front-end"
+        replacement = "Front-end"
+        return re.sub(pattern, replacement, title).strip().rstrip(".")
