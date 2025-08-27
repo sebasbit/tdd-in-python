@@ -15,7 +15,7 @@ def test_create_video_endpoint(client):
         "/video",
         data={"title": "  Course of frontend, Frontend, and more front-end.  "},
     )
-    assert response.status_code == 200
+    assert response.status_code == 201
     assert response.json() == {
         "id": 1,
         "title": "Course of Front-End, Front-End, and more Front-End",
