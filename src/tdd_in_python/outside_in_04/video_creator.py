@@ -1,6 +1,8 @@
 import abc
 import re
 
+from sqlalchemy.orm import Session
+
 
 class Video:
     title: str
@@ -8,6 +10,14 @@ class Video:
 
 class VideoRepository(abc.ABC):
     @abc.abstractmethod
+    def save(self, video: Video):
+        raise NotImplementedError
+
+
+class SQLAlchemyVideoRepository(VideoRepository):
+    def __init__(self, session: Session):
+        self.session = session
+
     def save(self, video: Video):
         raise NotImplementedError
 

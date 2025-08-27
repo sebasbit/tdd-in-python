@@ -82,6 +82,9 @@ select = [
 force-single-line = true
 order-by-type = false
 
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["fastapi.Depends", "fastapi.params.Depends"]
+
 [tool.tox]
 env_list = [
     "py3.13",
